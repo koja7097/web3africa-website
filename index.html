@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3Africa | Educating & Empowering Africa for the Decentralized Future</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Web3 Africa is a grassroots initiative dedicated to educating, empowering, and onboarding Africans into the decentralized web. Join us to bridge the gap between innovation and inclusion across the continent.">
+    <meta name="keywords" content="Web3, Blockchain, Africa, Education, Cryptocurrency, NFT, DeFi, Smart Contracts, Nigeria, Ghana, Kenya, SkillChain, Web3 Jobs">
+    <meta name="author" content="Web3Africa">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://web3africa.example.com/">
+    <meta property="og:title" content="Web3Africa | Educating & Empowering Africa for the Decentralized Future">
+    <meta property="og:description" content="A grassroots initiative dedicated to educating, empowering, and onboarding Africans into the decentralized web.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/richards-joseph/web3africang/main/web3africa-og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://web3africa.example.com/">
+    <meta property="twitter:title" content="Web3Africa | Educating & Empowering Africa for the Decentralized Future">
+    <meta property="twitter:description" content="A grassroots initiative dedicated to educating, empowering, and onboarding Africans into the decentralized web.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/richards-joseph/web3africang/main/web3africa-og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://raw.githubusercontent.com/richards-joseph/web3africang/main/web3africa-logo.png" type="image/png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js for Interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles & Animations -->
+    <style>
+        :root {
+            --color-primary: #F97316; /* Tangerine */
+            --color-secondary: #FBBF24; /* Yellow */
+            --color-text: #1f2937; /* Gray 800 */
+            --color-background: #fdfcfa; /* Off-white */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Custom Button Styles */
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(249, 115, 22, 0.39);
+        }
+        .btn-primary:hover {
+            background-color: #EA580C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(249, 115, 22, 0.5);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* Glassmorphism effect for header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(209, 213, 219, 0.3);
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes backgroundPan {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes gentle-gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animation Utility Classes */
+        .scroll-animate {
+            opacity: 0;
+        }
+        .scroll-animate.is-visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        /* Hero Background Animation */
+        .hero-bg-animated {
+            background: linear-gradient(120deg, #fffbeb, #fef3c7, #fffbeb);
+            background-size: 200% 200%;
+            animation: backgroundPan 15s ease infinite;
+        }
+
+        /* Header Logo & Title Animation */
+        .logo-animated {
+            animation: float 6s ease-in-out infinite;
+        }
+        .title-animated {
+            background: linear-gradient(to right, var(--color-primary), #1f2937, var(--color-primary));
+            background-size: 200% 200%;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: gentle-gradient-shift 10s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body x-data="{ language: 'en', mobileMenuOpen: false }">
+
+    <!-- Header / Navbar -->
+    <header x-data="{ atTop: true }" @scroll.window="atTop = (window.pageYOffset < 50)" 
+            :class="{ 'glass-header shadow-md': !atTop, 'py-5': atTop, 'py-3': !atTop }" 
+            class="sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center space-x-3">
+                <img src="https://raw.githubusercontent.com/richards-joseph/web3africang/main/web3africa-logo.png" alt="Web3Africa Logo" class="h-10 w-auto logo-animated">
+                <span class="text-2xl font-extrabold tracking-tight title-animated">Web3Africa</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-8 font-semibold text-gray-600">
+                <a href="#about" class="hover:text-orange-600 transition-colors duration-300"><span :class="{'hidden': language !== 'en'}">About</span><span :class="{'hidden': language !== 'fr'}">À Propos</span></a>
+                <a href="#programs" class="hover:text-orange-600 transition-colors duration-300"><span :class="{'hidden': language !== 'en'}">Programs</span><span :class="{'hidden': language !== 'fr'}">Programmes</span></a>
+                <a href="#team" class="hover:text-orange-600 transition-colors duration-300"><span :class="{'hidden': language !== 'en'}">Team</span><span :class="{'hidden': language !== 'fr'}">Équipe</span></a>
+                <a href="https://web3africaa.medium.com" target="_blank" class="hover:text-orange-600 transition-colors duration-300"><span :class="{'hidden': language !== 'en'}">Blog</span><span :class="{'hidden': language !== 'fr'}">Blog</span></a>
+                <a href="#events" class="hover:text-orange-600 transition-colors duration-300"><span :class="{'hidden': language !== 'en'}">Events</span><span :class="{'hidden': language !== 'fr'}">Événements</span></a>
+            </div>
+
+            <!-- Right side: Language Switcher & CTA -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                    <button @click="open = !open" class="flex items-center space-x-1 text-sm font-medium text-gray-500 hover:text-gray-800">
+                        <span x-text="language === 'en' ? '🇬🇧 English' : '🇫🇷 Français'"></span>
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="open" x-transition class="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-10" style="display: none;">
+                        <a href="#" @click.prevent="language = 'en'; open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">🇬🇧 English</a>
+                        <a href="#" @click.prevent="language = 'fr'; open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">🇫🇷 Français</a>
+                    </div>
+                </div>
+                <a href="#contact" class="btn-primary font-bold py-2 px-5 rounded-full text-sm">
+                    <span :class="{'hidden': language !== 'en'}">Contact Us</span><span :class="{'hidden': language !== 'fr'}">Contactez-nous</span>
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-800 hover:text-orange-600 focus:outline-none">
+                    <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path :class="{'hidden': mobileMenuOpen}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        <path :class="{'hidden': !mobileMenuOpen}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" style="display: none;" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-4" class="lg:hidden absolute top-full left-0 w-full bg-white shadow-xl z-40">
+            <div class="container mx-auto px-4 pt-4 pb-8 space-y-4">
+                <a href="#about" @click="mobileMenuOpen = false" class="block text-lg font-semibold text-gray-700 hover:text-orange-600"><span :class="{'hidden': language !== 'en'}">About</span><span :class="{'hidden': language !== 'fr'}">À Propos</span></a>
+                <a href="#programs" @click="mobileMenuOpen = false" class="block text-lg font-semibold text-gray-700 hover:text-orange-600"><span :class="{'hidden': language !== 'en'}">Programs</span><span :class="{'hidden': language !== 'fr'}">Programmes</span></a>
+                <a href="#team" @click="mobileMenuOpen = false" class="block text-lg font-semibold text-gray-700 hover:text-orange-600"><span :class="{'hidden': language !== 'en'}">Team</span><span :class="{'hidden': language !== 'fr'}">Équipe</span></a>
+                <a href="https://web3africaa.medium.com" target="_blank" @click="mobileMenuOpen = false" class="block text-lg font-semibold text-gray-700 hover:text-orange-600"><span :class="{'hidden': language !== 'en'}">Blog</span><span :class="{'hidden': language !== 'fr'}">Blog</span></a>
+                <a href="#events" @click="mobileMenuOpen = false" class="block text-lg font-semibold text-gray-700 hover:text-orange-600"><span :class="{'hidden': language !== 'en'}">Events</span><span :class="{'hidden': language !== 'fr'}">Événements</span></a>
+                <hr class="my-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-500"><span :class="{'hidden': language !== 'en'}">Language</span><span :class="{'hidden': language !== 'fr'}">Langue</span>:</span>
+                    <div>
+                        <button @click="language = 'en'" :class="{ 'bg-orange-500 text-white': language === 'en', 'bg-gray-200': language !== 'en' }" class="px-3 py-1 rounded-l-md text-sm">🇬🇧</button>
+                        <button @click="language = 'fr'" :class="{ 'bg-orange-500 text-white': language === 'fr', 'bg-gray-200': language !== 'fr' }" class="px-3 py-1 rounded-r-md text-sm">🇫🇷</button>
+                    </div>
+                </div>
+                <a href="#contact" @click="mobileMenuOpen = false" class="block w-full text-center mt-4 btn-primary font-bold py-3 px-6 rounded-full">
+                    <span :class="{'hidden': language !== 'en'}">Contact Us</span><span :class="{'hidden': language !== 'fr'}">Contactez-nous</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="home">
+
+        <!-- Hero Section -->
+        <section class="relative pt-24 pb-32 md:pt-32 md:pb-40 overflow-hidden hero-bg-animated">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tighter leading-tight max-w-4xl mx-auto scroll-animate">
+                    <span :class="{'hidden': language !== 'en'}">Educating & Empowering Africa for the <span class="text-orange-600">Decentralized Future</span></span>
+                    <span :class="{'hidden': language !== 'fr'}">Éduquer et Autonomiser l'Afrique pour un <span class="text-orange-600">Avenir Décentralisé</span></span>
+                </h1>
+                <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto scroll-animate" style="animation-delay: 200ms;">
+                    <span :class="{'hidden': language !== 'en'}">Web3 Africa is a grassroots initiative dedicated to educating, empowering, and onboarding Africans into the decentralized web. We are bridging the gap between innovation and inclusion across the continent.</span>
+                    <span :class="{'hidden': language !== 'fr'}">Web3 Africa est une initiative locale dédiée à l'éducation, à l'autonomisation et à l'intégration des Africains dans le web décentralisé. Nous comblons le fossé entre l'innovation et l'inclusion sur tout le continent.</span>
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 scroll-animate" style="animation-delay: 400ms;">
+                    <a href="https://web3africa.gitbook.io/web3-africa-documentation" target="_blank" class="btn-primary font-bold py-4 px-8 rounded-full text-lg w-full sm:w-auto">
+                        <span :class="{'hidden': language !== 'en'}">Read Whitepaper</span><span :class="{'hidden': language !== 'fr'}">Lire le Livre Blanc</span>
+                    </a>
+                    <a href="https://discord.gg/SyWevJF7" target="_blank" class="btn-secondary font-bold py-4 px-8 rounded-full text-lg w-full sm:w-auto">
+                        <span :class="{'hidden': language !== 'en'}">Join Community</span><span :class="{'hidden': language !== 'fr'}">Rejoindre la Communauté</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 md:py-28 bg-white overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto scroll-animate">
+                    <div class="mb-4">
+                        <span class="text-orange-600 font-semibold tracking-wide uppercase"><span :class="{'hidden': language !== 'en'}">Our Mission</span><span :class="{'hidden': language !== 'fr'}">Notre Mission</span></span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+                        <span :class="{'hidden': language !== 'en'}">Building the Foundation for a Decentralized Africa</span>
+                        <span :class="{'hidden': language !== 'fr'}">Construire les Fondations d'une Afrique Décentralisée</span>
+                    </h2>
+                    <p class="mt-6 text-lg text-gray-600">
+                        <span :class="{'hidden': language !== 'en'}">We believe in the power of Web3 to unlock unprecedented opportunities for innovation, economic growth, and financial inclusion in Africa. Our mission is to provide accessible, high-quality education, foster a collaborative community of builders, and connect African talent to the global Web3 ecosystem.</span>
+                        <span :class="{'hidden': language !== 'fr'}">Nous croyons au pouvoir du Web3 pour débloquer des opportunités sans précédent d'innovation, de croissance économique et d'inclusion financière en Afrique. Notre mission est de fournir une éducation accessible et de haute qualité, de favoriser une communauté collaborative de bâtisseurs et de connecter les talents africains à l'écosystème mondial du Web3.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs" class="py-20 md:py-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto scroll-animate">
+                    <span class="text-orange-600 font-semibold tracking-wide uppercase"><span :class="{'hidden': language !== 'en'}">Get Involved</span><span :class="{'hidden': language !== 'fr'}">Participez</span></span>
+                    <h2 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+                        <span :class="{'hidden': language !== 'en'}">Our Core Initiatives</span><span :class="{'hidden': language !== 'fr'}">Nos Initiatives Clés</span>
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        <span :class="{'hidden': language !== 'en'}">From hands-on training to leadership roles, here's how you can be part of the movement.</span>
+                        <span :class="{'hidden': language !== 'fr'}">De la formation pratique aux rôles de leadership, voici comment vous pouvez faire partie du mouvement.</span>
+                    </p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- SkillChain Program Card -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 scroll-animate group">
+                        <div class="bg-orange-100 text-orange-600 rounded-xl h-12 w-12 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold text-gray-900">
+                            <span :class="{'hidden': language !== 'en'}">SkillChain Program</span><span :class="{'hidden': language !== 'fr'}">Programme SkillChain</span>
+                        </h3>
+                        <p class="mt-2 text-gray-600">
+                            <span :class="{'hidden': language !== 'en'}">Join our intensive training program to learn in-demand Web3 skills and get ready for a career in the decentralized space.</span>
+                            <span :class="{'hidden': language !== 'fr'}">Rejoignez notre programme de formation intensif pour acquérir des compétences Web3 recherchées et vous préparer à une carrière dans l'espace décentralisé.</span>
+                        </p>
+                        <a href="https://tally.so/r/mJrEGX" target="_blank" class="mt-6 inline-block font-semibold text-orange-600 hover:text-orange-800">
+                            <span class="flex items-center gap-2"><span :class="{'hidden': language !== 'en'}">Apply Now</span><span :class="{'hidden': language !== 'fr'}">Postulez</span> <span class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span></span>
+                        </a>
+                    </div>
+                    <!-- Ambassador Program Card -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 scroll-animate group" style="animation-delay: 150ms;">
+                        <div class="bg-yellow-100 text-yellow-600 rounded-xl h-12 w-12 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold text-gray-900">
+                            <span :class="{'hidden': language !== 'en'}">Ambassador Program</span><span :class="{'hidden': language !== 'fr'}">Programme Ambassadeur</span>
+                        </h3>
+                        <p class="mt-2 text-gray-600">
+                            <span :class="{'hidden': language !== 'en'}">Become a leader in your community. Represent Web3Africa, organize events, and help us grow our reach across the continent.</span>
+                            <span :class="{'hidden': language !== 'fr'}">Devenez un leader dans votre communauté. Représentez Web3Africa, organisez des événements et aidez-nous à étendre notre portée sur le continent.</span>
+                        </p>
+                        <a href="https://forms.gle/w7tbXAA7jwbNFYe87" target="_blank" class="mt-6 inline-block font-semibold text-orange-600 hover:text-orange-800">
+                            <span class="flex items-center gap-2"><span :class="{'hidden': language !== 'en'}">Become an Ambassador</span><span :class="{'hidden': language !== 'fr'}">Devenez Ambassadeur</span> <span class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span></span>
+                        </a>
+                    </div>
+                    <!-- Submit Project Card -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 scroll-animate group" style="animation-delay: 300ms;">
+                        <div class="bg-green-100 text-green-600 rounded-xl h-12 w-12 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold text-gray-900">
+                            <span :class="{'hidden': language !== 'en'}">Submit a Project</span><span :class="{'hidden': language !== 'fr'}">Soumettre un Projet</span>
+                        </h3>
+                        <p class="mt-2 text-gray-600">
+                            <span :class="{'hidden': language !== 'en'}">Have an innovative Web3 idea or an existing project? We'd love to hear about it and explore potential collaborations.</span>
+                            <span :class="{'hidden': language !== 'fr'}">Vous avez une idée Web3 innovante ou un projet existant ? Nous serions ravis d'en savoir plus et d'explorer des collaborations potentielles.</span>
+                        </p>
+                        <a href="mailto:web3africa2024@gmail.com" class="mt-6 inline-block font-semibold text-orange-600 hover:text-orange-800">
+                            <span class="flex items-center gap-2"><span :class="{'hidden': language !== 'en'}">Contact Us</span><span :class="{'hidden': language !== 'fr'}">Contactez-nous</span> <span class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Team Section -->
+        <section id="team" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto scroll-animate">
+                    <span class="text-orange-600 font-semibold tracking-wide uppercase"><span :class="{'hidden': language !== 'en'}">Our Leaders</span><span :class="{'hidden': language !== 'fr'}">Nos Dirigeants</span></span>
+                    <h2 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+                        <span :class="{'hidden': language !== 'en'}">The Driving Force Behind Web3Africa</span>
+                        <span :class="{'hidden': language !== 'fr'}">La Force Motrice de Web3Africa</span>
+                    </h2>
+                </div>
+                <div class="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
+                    <!-- Team Member Card -->
+                    <div class="text-center p-4 group scroll-animate" style="animation-delay: 50ms;">
+                        <div class="relative inline-block">
+                            <div class="p-1 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
+                                <div class="bg-white rounded-md p-6 min-w-[160px]">
+                                    <h3 class="font-bold text-gray-800 text-lg">Richard Joseph</h3>
+                                    <p class="text-sm text-orange-600 font-semibold">CEO (Nigeria 🇳🇬)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat for other team members -->
+                    <div class="text-center p-4 group scroll-animate" style="animation-delay: 100ms;"><div class="relative inline-block"><div class="p-1 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"><div class="bg-white rounded-md p-6 min-w-[160px]"><h3 class="font-bold text-gray-800 text-lg">Atom</h3><p class="text-sm text-orange-600 font-semibold">Operations Lead (Ghana 🇬🇭)</p></div></div></div></div>
+                    <div class="text-center p-4 group scroll-animate" style="animation-delay: 150ms;"><div class="relative inline-block"><div class="p-1 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"><div class="bg-white rounded-md p-6 min-w-[160px]"><h3 class="font-bold text-gray-800 text-lg">Segun Paul</h3><p class="text-sm text-orange-600 font-semibold">Community Manager (Nigeria 🇳🇬)</p></div></div></div></div>
+                    <div class="text-center p-4 group scroll-animate" style="animation-delay: 200ms;"><div class="relative inline-block"><div class="p-1 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"><div class="bg-white rounded-md p-6 min-w-[160px]"><h3 class="font-bold text-gray-800 text-lg">Rafiq</h3><p class="text-sm text-orange-600 font-semibold">Comms Lead (Ghana 🇬🇭)</p></div></div></div></div>
+                    <div class="text-center p-4 group scroll-animate" style="animation-delay: 250ms;"><div class="relative inline-block"><div class="p-1 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"><div class="bg-white rounded-md p-6 min-w-[160px]"><h3 class="font-bold text-gray-800 text-lg">Precious</h3><p class="text-sm text-orange-600 font-semibold">Dev Lead (Ghana 🇬🇭)</p></div></div></div></div>
+                    <div class="text-center p-4 group scroll-animate" style="animation-delay: 300ms;"><div class="relative inline-block"><div class="p-1 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"><div class="bg-white rounded-md p-6 min-w-[160px]"><h3 class="font-bold text-gray-800 text-lg">Aniba</h3><p class="text-sm text-orange-600 font-semibold">Partnerships (Nigeria 🇳🇬)</p></div></div></div></div>
+                    <div class="text-center p-4 group scroll-animate" style="animation-delay: 350ms;"><div class="relative inline-block"><div class="p-1 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"><div class="bg-white rounded-md p-6 min-w-[160px]"><h3 class="font-bold text-gray-800 text-lg">Mary Grace</h3><p class="text-sm text-orange-600 font-semibold">Programs (Nigeria 🇳🇬)</p></div></div></div></div>
+                    <div class="text-center p-4 group scroll-animate" style="animation-delay: 400ms;"><div class="relative inline-block"><div class="p-1 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"><div class="bg-white rounded-md p-6 min-w-[160px]"><h3 class="font-bold text-gray-800 text-lg">Emem</h3><p class="text-sm text-orange-600 font-semibold">Content Strategist (Nigeria 🇳🇬)</p></div></div></div></div>
+                    <div class="text-center p-4 group scroll-animate" style="animation-delay: 450ms;"><div class="relative inline-block"><div class="p-1 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"><div class="bg-white rounded-md p-6 min-w-[160px]"><h3 class="font-bold text-gray-800 text-lg">Mufasa</h3><p class="text-sm text-orange-600 font-semibold">Training & Logistics (Nigeria 🇳🇬)</p></div></div></div></div>
+                    <div class="text-center p-4 group scroll-animate" style="animation-delay: 500ms;"><div class="relative inline-block"><div class="p-1 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"><div class="bg-white rounded-md p-6 min-w-[160px]"><h3 class="font-bold text-gray-800 text-lg">Love Kingston</h3><p class="text-sm text-orange-600 font-semibold">Communication & Community (Nigeria 🇳🇬)</p></div></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community & Events Section -->
+        <section id="events" class="py-20 md:py-28 overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="scroll-animate">
+                        <span class="text-orange-600 font-semibold tracking-wide uppercase"><span :class="{'hidden': language !== 'en'}">Connect & Grow</span><span :class="{'hidden': language !== 'fr'}">Connectez-vous et Grandissez</span></span>
+                        <h2 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+                            <span :class="{'hidden': language !== 'en'}">Join the Conversation</span>
+                            <span :class="{'hidden': language !== 'fr'}">Rejoignez la Conversation</span>
+                        </h2>
+                        <p class="mt-6 text-lg text-gray-600">
+                            <span :class="{'hidden': language !== 'en'}">Our community is the heart of Web3Africa. Find your place, share your voice, and discover new opportunities.</span>
+                            <span :class="{'hidden': language !== 'fr'}">Notre communauté est le cœur de Web3Africa. Trouvez votre place, partagez votre voix et découvrez de nouvelles opportunités.</span>
+                        </p>
+                    </div>
+                    <div class="space-y-6 scroll-animate" style="animation-delay: 200ms;">
+                        <a href="https://x.com/web3afric" target="_blank" class="flex items-start p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            <div class="flex-shrink-0 h-10 w-10 text-orange-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900"><span :class="{'hidden': language !== 'en'}">Events & X Spaces</span><span :class="{'hidden': language !== 'fr'}">Événements & Espaces X</span></h3>
+                                <p class="text-gray-600"><span :class="{'hidden': language !== 'en'}">Follow us on X for the latest announcements on our Twitter Spaces, AMAs, and virtual events.</span><span :class="{'hidden': language !== 'fr'}">Suivez-nous sur X pour les dernières annonces sur nos Espaces Twitter, AMAs et événements virtuels.</span></p>
+                            </div>
+                        </a>
+                        <a href="mailto:web3africa2024@gmail.com?subject=Application to Speak at Web3Africa X Space" class="flex items-start p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            <div class="flex-shrink-0 h-10 w-10 text-orange-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V4a2 2 0 012-2h8a2 2 0 012 2v4z" /></svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900"><span :class="{'hidden': language !== 'en'}">Apply to Speak</span><span :class="{'hidden': language !== 'fr'}">Postuler pour Parler</span></h3>
+                                <p class="text-gray-600"><span :class="{'hidden': language !== 'en'}">Are you an expert in the field? We invite you to share your knowledge with our community. Send us an email to apply.</span><span :class="{'hidden': language !== 'fr'}">Êtes-vous un expert dans le domaine ? Nous vous invitons à partager vos connaissances avec notre communauté. Envoyez-nous un email pour postuler.</span></p>
+                            </div>
+                        </a>
+                        <a href="https://discord.gg/SyWevJF7" target="_blank" class="flex items-start p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            <div class="flex-shrink-0 h-10 w-10 text-orange-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900"><span :class="{'hidden': language !== 'en'}">Jobs & Careers</span><span :class="{'hidden': language !== 'fr'}">Emplois & Carrières</span></h3>
+                                <p class="text-gray-600"><span :class="{'hidden': language !== 'en'}">Find your next opportunity in Web3. Join our Discord server for the latest job postings from our partners and the wider ecosystem.</span><span :class="{'hidden': language !== 'fr'}">Trouvez votre prochaine opportunité dans le Web3. Rejoignez notre serveur Discord pour les dernières offres d'emploi de nos partenaires et de l'écosystème.</span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog/Learn Section -->
+        <section id="blog" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative bg-gray-800 rounded-3xl p-10 md:p-16 overflow-hidden scroll-animate">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1932&auto=format&fit=crop');"></div>
+                    <div class="relative text-center">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+                            <span :class="{'hidden': language !== 'en'}">Learn Web3 with Us</span>
+                            <span :class="{'hidden': language !== 'fr'}">Apprenez le Web3 avec Nous</span>
+                        </h2>
+                        <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+                            <span :class="{'hidden': language !== 'en'}">Dive into our collection of articles, tutorials, and insights on our Medium page. Your journey to mastering Web3 starts here.</span>
+                            <span :class="{'hidden': language !== 'fr'}">Plongez dans notre collection d'articles, de tutoriels et d'analyses sur notre page Medium. Votre parcours pour maîtriser le Web3 commence ici.</span>
+                        </p>
+                        <a href="https://web3africaa.medium.com" target="_blank" class="mt-8 inline-block btn-primary font-bold py-4 px-8 rounded-full text-lg">
+                            <span :class="{'hidden': language !== 'en'}">Explore Our Blog</span><span :class="{'hidden': language !== 'fr'}">Explorez Notre Blog</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-gray-400">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- About -->
+                <div class="space-y-4">
+                    <a href="#home" class="flex items-center space-x-3">
+                         <img src="https://raw.githubusercontent.com/richards-joseph/web3africang/main/web3africa-logo.png" alt="Web3Africa Logo" class="h-8 w-auto">
+                        <span class="text-xl font-extrabold text-white">Web3Africa</span>
+                    </a>
+                    <p class="text-sm">
+                        <span :class="{'hidden': language !== 'en'}">Bridging the gap between innovation and inclusion across the African continent through Web3 education.</span>
+                        <span :class="{'hidden': language !== 'fr'}">Combler le fossé entre l'innovation et l'inclusion sur le continent africain grâce à l'éducation Web3.</span>
+                    </p>
+                </div>
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h3 class="font-bold text-white text-lg tracking-wider uppercase"><span :class="{'hidden': language !== 'en'}">Quick Links</span><span :class="{'hidden': language !== 'fr'}">Liens Rapides</span></h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="#programs" class="hover:text-white transition-colors">Programs</a></li>
+                        <li><a href="https://web3africaa.medium.com" target="_blank" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#team" class="hover:text-white transition-colors">Team</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div class="space-y-4">
+                    <h3 class="font-bold text-white text-lg tracking-wider uppercase">Contact</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li>
+                            <a href="mailto:web3africa2024@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                web3africa2024@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Socials -->
+                <div class="space-y-4">
+                    <h3 class="font-bold text-white text-lg tracking-wider uppercase"><span :class="{'hidden': language !== 'en'}">Follow Us</span><span :class="{'hidden': language !== 'fr'}">Suivez-nous</span></h3>
+                    <div class="flex space-x-4">
+                        <a href="https://x.com/web3afric" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="https://t.me/web3Afric" target="_blank" rel="noopener noreferrer" aria-label="Join our Telegram" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.58c-.28 1.13-1.04 1.4-1.74.88l-4.98-3.6-2.32 2.23c-.25.24-.47.47-.97.47z"/></svg>
+                        </a>
+                        <a href="https://discord.gg/SyWevJF7" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" role="img" viewBox="0 0 24 24"><path d="M20.317 4.369a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.352-.43.847-.608 1.252a18.468 18.468 0 00-5.484 0 10.922 10.922 0 00-.608-1.252.074.074 0 00-.079-.037A19.736 19.736 0 003.683 4.37a.074.074 0 00-.035.079 20.385 20.385 0 00-1.32 8.19c.04.351.187.683.418.963.232.28.534.52.872.695a18.23 18.23 0 005.585 2.153.074.074 0 00.086-.051c.34-.73.634-1.494.872-2.293a.075.075 0 00-.036-.092 15.422 15.422 0 01-1.42-1.252.074.074 0 01.018-.101c.148-.1.296-.2.443-.3a.075.075 0 01.096 0c.09.061.187.122.284.183.097.062.202.102.31.122a.075.075 0 01.044.092c-.232.74-.506 1.438-.818 2.105a.075.075 0 00.086.051 18.23 18.23 0 005.585-2.153c.338-.174.64-.415.872-.695.232-.28.378-.612.418-.963a20.385 20.385 0 00-1.32-8.19.074.074 0 00-.035-.08zM8.02 15.33c-.833 0-1.506-.715-1.506-1.594s.673-1.594 1.506-1.594c.833 0 1.506.715 1.506 1.594s-.673 1.594-1.506 1.594zm7.96 0c-.833 0-1.506-.715-1.506-1.594s.673-1.594 1.506-1.594c.833 0 1.506.715 1.506 1.594.001.879-.672 1.594-1.506 1.594z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-sm">
+                <p>&copy; <span x-text="new Date().getFullYear()"></span> Web3Africa. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            const elements = document.querySelectorAll('.scroll-animate');
+            elements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
