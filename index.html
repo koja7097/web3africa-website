@@ -40,9 +40,7 @@
             backdrop-filter: blur(16px);
         }
 
-        /* --- NEW ANIMATIONS --- */
-
-        /* Keyframes for new animations */
+        /* Animations */
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 15px rgba(217, 119, 6, 0.4); }
             50% { box-shadow: 0 0 25px rgba(217, 119, 6, 0.7); }
@@ -52,17 +50,11 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        /* Animation utility classes */
-        .animate-pulse-glow {
-            animation: pulse-glow 4s infinite ease-in-out;
-        }
+        .animate-pulse-glow { animation: pulse-glow 4s infinite ease-in-out; }
         .animate-gradient-pan {
             background-size: 200% 200%;
             animation: gradient-pan 5s infinite ease-in-out;
         }
-
-        /* Enhanced scroll animation */
         .scroll-animate {
             opacity: 0;
             transform: translateY(20px);
@@ -73,9 +65,6 @@
             transform: translateY(0);
         }
         
-        /* --- END OF NEW ANIMATIONS --- */
-
-
         .btn-primary {
             position: relative;
             background: var(--color-primary);
@@ -96,7 +85,7 @@
             border: 1px solid var(--color-border);
             border-radius: 1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden; /* Added to contain the corner icon */
+            overflow: hidden;
         }
         .interactive-card:hover {
             transform: translateY(-10px);
@@ -131,7 +120,7 @@
                 <a href="#initiatives" class="hover:text-white transition-colors">Initiatives</a>
                 <a href="#team" class="hover:text-white transition-colors">Team</a>
                 <a href="#partners" class="hover:text-white transition-colors">Partners</a>
-                <a href="#events" class="hover:text-white transition-colors">Our Events</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
                 <a href="#blog" class="hover:text-white transition-colors">Blog</a>
             </div>
             <div class="flex items-center space-x-4">
@@ -146,7 +135,7 @@
                 <a href="#initiatives" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Initiatives</a>
                 <a href="#team" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Team</a>
                 <a href="#partners" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Partners</a>
-                <a href="#events" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Our Events</a>
+                <a href="#contact" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Contact</a>
                 <a href="#blog" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Blog</a>
             </div>
         </div>
@@ -161,7 +150,7 @@
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
                     <a href="#initiatives" class="btn-primary font-bold py-4 px-10 rounded-full text-lg animate-pulse-glow">Explore Initiatives</a>
-                    <a href="https://web3africa.gitbook.io/web3-africa-documentation" target="_blank" class="font-semibold text-slate-300 hover:text-white transition-colors">Read Whitepaper &rarr;</a>
+                    <a href="https://web3africa.gitbook.io/web3-africa-documentation" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-300 hover:text-white transition-colors">Read Whitepaper &rarr;</a>
                 </div>
             </div>
         </section>
@@ -194,7 +183,7 @@
                             <img src="Web3africa-skillchain.png" alt="SkillChain Program visual" />
                         </div>
                         <p class="text-slate-400">Join our intensive training program to learn in-demand Web3 skills and get ready for a career in the decentralized space.</p>
-                        <a href="#" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Apply Now &rarr;</a>
+                        <a href="https://tally.so/r/mJrEGX" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Apply Now &rarr;</a>
                     </div>
                     <div class="interactive-card p-8 scroll-animate" style="transition-delay: 150ms;">
                         <h3 class="text-2xl font-bold text-white mb-4">Ambassador Program</h3>
@@ -202,7 +191,7 @@
                             <img src="Web3africa-ambassador.png" alt="Ambassador Program visual" />
                         </div>
                         <p class="text-slate-400">Become a leader in your community. Represent Web3Africa and help us grow our reach across the continent.</p>
-                        <a href="#" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Become an Ambassador &rarr;</a>
+                        <a href="https://forms.gle/w7tbXAA7jwbNFYe87" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Become an Ambassador &rarr;</a>
                     </div>
                     <div class="interactive-card p-8 scroll-animate relative" style="transition-delay: 300ms;">
                         <div class="absolute top-0 right-0 p-4">
@@ -212,7 +201,7 @@
                         </div>
                         <h3 class="text-2xl font-bold text-white mb-4 mt-6">Project Incubation</h3>
                         <p class="mt-4 text-slate-400">Have an innovative Web3 idea? We provide resources, funding, and mentorship to help you build and launch your project.</p>
-                        <a href="#" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Submit a Project &rarr;</a>
+                        <a href="mailto:web3africa2024@gmail.com" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Submit a Project &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -230,7 +219,7 @@
                             <img src="Web3africa-edenfi.png" alt="EdenFi Logo" />
                         </div>
                         <p class="text-slate-400">A revolutionary smart wallet for Africa and its diaspora.</p>
-                        <a href="https://edenfi.io" target="_blank" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Read more about EdenFi &rarr;</a>
+                        <a href="https://edenfi.io" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Read more about EdenFi &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -238,36 +227,14 @@
         
         <hr class="border-t border-slate-700/50 container mx-auto">
 
-        <section id="events" class="py-24">
-            <div class="container mx-auto px-4 text-center scroll-animate">
-                <h2 class="section-title text-4xl font-extrabold mb-6 tracking-tight animate-gradient-pan">Our Events</h2>
-                <p class="mt-6 max-w-3xl mx-auto text-xl text-slate-300">
-                    Check out our upcoming scheduled events and participate in our community activities!
-                </p>
-                <div class="mt-12">
-                    <a href="https://docs.google.com/document/d/1vScp2PBVgLFmSF1NOE0y73b-Ezgsrsx8nZPrLw_iHPo/edit?usp=drivesdk" target="_blank" class="btn-primary font-bold py-4 px-10 rounded-full text-lg animate-pulse-glow">View Upcoming Events</a>
-                </div>
-            </div>
-        </section>
-
-        <hr class="border-t border-slate-700/50 container mx-auto">
-
         <section id="team" class="py-24">
             <div class="container mx-auto px-4 text-center scroll-animate">
-                <h2 class="section-title text-4xl font-extrabold mb-16 tracking-tight animate-gradient-pan">The Core Team</h2>
-                <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="interactive-card p-8 scroll-animate">
-                        <h3 class="text-2xl font-bold text-white">Richard Joseph</h3>
-                        <p class="text-orange-500">CEO (Nigeria 🇳🇬)</p>
-                    </div>
-                    <div class="interactive-card p-8 scroll-animate" style="transition-delay: 150ms;">
-                        <h3 class="text-2xl font-bold text-white">Atom</h3>
-                        <p class="text-orange-500">Operations Lead (Ghana 🇬🇭)</p>
-                    </div>
-                    <div class="interactive-card p-8 scroll-animate" style="transition-delay: 300ms;">
-                        <h3 class="text-2xl font-bold text-white">Segun Paul</h3>
-                        <p class="text-orange-500">Community Manager (Nigeria 🇳🇬)</p>
-                    </div>
+                <h2 class="section-title text-4xl font-extrabold mb-6 tracking-tight animate-gradient-pan">The Core Team</h2>
+                <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-300">
+                    Our dedicated team of builders, educators, and community leaders is the driving force behind our mission. We are passionate about empowering Africa for the decentralized future.
+                </p>
+                <div class="mt-12">
+                    <a href="#" class="btn-primary font-bold py-4 px-10 rounded-full text-lg">Meet The Core Team</a>
                 </div>
             </div>
         </section>
@@ -276,29 +243,44 @@
             <div class="container mx-auto px-4 text-center scroll-animate">
                 <h2 class="section-title text-4xl font-extrabold mb-6 tracking-tight animate-gradient-pan">From Our Blog</h2>
                 <p class="mt-4 text-slate-400 max-w-2xl mx-auto">Dive into our articles, tutorials, and insights on our Medium page to stay updated with the latest in the Web3 space from an African perspective.</p>
-                <a href="https://web3africaa.medium.com" target="_blank" class="mt-8 btn-primary font-bold py-4 px-10 rounded-full text-lg inline-block animate-pulse-glow">Read More &rarr;</a>
+                <a href="https://web3africaa.medium.com" target="_blank" rel="noopener noreferrer" class="mt-8 btn-primary font-bold py-4 px-10 rounded-full text-lg inline-block animate-pulse-glow">Read More &rarr;</a>
             </div>
         </section>
     </main>
 
     <footer id="contact" class="bg-gray-900 text-slate-400 border-t border-orange-500/20">
-        <div class="container mx-auto px-4 py-16 text-center">
-            <p>&copy; <span id="copyright-year"></span> Web3Africa. All Rights Reserved.</p>
+        <div class="container mx-auto px-4 py-12">
+            <div class="flex justify-center items-center space-x-6 mb-8">
+                <a href="https://x.com/web3afric" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="X page">
+                    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="https://t.me/web3Afric" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="Telegram">
+                    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.24-3.11-2.04 2.07c-.23.23-.42.42-.83.42z"></path></svg>
+                </a>
+                <a href="https://discord.gg/ahE7tcUA" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="Discord">
+                   <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4464.8254-.6184 1.2525a17.2963 17.2963 0 00-4.8776 0 18.01 18.01 0 00-.6184-1.2525.077.077 0 00-.0785-.0371a19.7913 19.7913 0 00-4.8851 1.5152.0699.0699 0 00-.0321.027c-1.8431 4.6745-1.8431 9.673 0 14.3475a.069.069 0 00.0321.027c1.6222.4877 3.2651.8741 4.8851 1.1591a.076.076 0 00.0785-.0371c.2376-.4687.4599-.959.6443-1.4563a.0731.0731 0 00-.0429-.0861a12.8333 12.8333 0 01-1.2581-.6074a.0711.0711 0 01-.0076-.1037c.1258-.1744.2516-.3488.3774-.539a.0721.0721 0 01.082-.027c.4646.1349.9292.2539 1.4093.371a.077.077 0 00.0861-.051c.2309-.6877.3938-1.4225.4985-2.1822a.075.075 0 00-.051-.0861c-1.022-1.01-2.181-1.6248-3.4475-1.85a.0741.0741 0 01-.0586-.0861c.002-.021.003-.042.004-.063a.0711.0711 0 01.025-.059c1.048-1.028 2.34-1.442 3.815-1.442s2.767.414 3.815 1.442a.0711.0711 0 01.025.059c.001.021.002.042.004.063a.0741.0741 0 01-.0586.0861c-1.2665.2252-2.4255.84-3.4475 1.85a.075.075 0 00-.051.0861c.1047.7597.2676 1.4945.4985 2.1822a.077.077 0 00.0861.051c.4801-.1171.9447-.2361 1.4093-.371a.0721.0721 0 01.082.027c.1258.1902.2516.3646.3774.539a.0711.0711 0 01-.0076.1037 12.8333 12.8333 0 01-1.2581.6074a.0731.0731 0 00-.0429.0861c.1844.4973.4067.9876.6443 1.4563a.076.076 0 00.0785.0371c1.6199-.285 3.2631-.6714 4.8851-1.1591a.069.069 0 00.0321-.027c1.8431-4.6745 1.8431-9.673 0-14.3475a.0699.0699 0 00-.0321-.027z"></path></svg>
+                </a>
+                 <a href="https://web3africaa.medium.com" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="Medium">
+                    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M7.45 18.55h9.1V5.45h-9.1v13.1Zm-2.9-13.1H.95v13.1h3.6v-13.1Zm16.7 0h-3.6v13.1h3.6v-13.1Z"></path></svg>
+                </a>
+                <a href="mailto:web3africa2024@gmail.com" class="text-slate-400 hover:text-white transition-colors" aria-label="Contact via Email">
+                   <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
+                </a>
+            </div>
+            <p class="text-center text-sm">&copy; <span id="copyright-year"></span> Web3Africa. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('copyright-year').textContent = new Date().getFullYear();
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
                     }
                 });
-            }, { threshold: 0.2 }); // Changed threshold for better timing
-
+            }, { threshold: 0.2 });
             document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
         });
     </script>
