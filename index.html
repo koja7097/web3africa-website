@@ -9,7 +9,7 @@
     <meta name="keywords" content="Web3, Blockchain, Africa, Decentralized, Cryptocurrency, NFT, DeFi, Smart Contracts, Metaverse, Nigeria, Ghana, Kenya, SkillChain, Web3 Jobs, DLT">
     <meta name="author" content="Web3Africa">
 
-    <link rel="icon" href="web3africa-logo.png"> <!-- Main logo path -->
+    <link rel="icon" href="web3africa-logo.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -29,22 +29,16 @@
             --color-text-dark: #020617;
             --color-border: rgba(217, 119, 6, 0.2);
         }
-
-        /* Base Body Styles */
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--color-background);
             color: var(--color-text-light);
             overflow-x: hidden;
         }
-
-        /* Header Styling */
         .header {
             background: rgba(2, 6, 23, 0.7);
             backdrop-filter: blur(16px);
         }
-
-        /* Button Styles */
         .btn-primary {
             position: relative;
             background: var(--color-primary);
@@ -56,16 +50,12 @@
             transform: translateY(-3px);
             box-shadow: 0 0 25px rgba(217, 119, 6, 0.6);
         }
-
-        /* Section Title Styling */
         .section-title {
             background: -webkit-linear-gradient(45deg, var(--color-accent), var(--color-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 2.5rem;
         }
-
-        /* Card Styles */
         .interactive-card {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
@@ -76,8 +66,6 @@
             transform: translateY(-10px);
             box-shadow: 0 0 30px rgba(217, 119, 6, 0.3);
         }
-
-        /* Animations */
         .scroll-animate {
             opacity: 0;
             transition: opacity 0.8s ease-out;
@@ -85,8 +73,6 @@
         .is-visible {
             opacity: 1;
         }
-
-        /* Image styles */
         .image-container {
             position: relative;
             overflow: hidden;
@@ -103,7 +89,7 @@
     </style>
 </head>
 
-<body x-data="{ language: 'en', mobileMenuOpen: false }">
+<body x-data="{ mobileMenuOpen: false }">
 
     <header class="header sticky top-0 z-50">
         <nav class="container mx-auto px-4 flex items-center justify-between h-24">
@@ -111,20 +97,33 @@
                 <img src="web3africa-logo.png" alt="Web3Africa Logo" class="h-12 w-auto">
                 <span class="text-2xl font-extrabold text-white">Web3Africa</span>
             </a>
+
             <div class="hidden lg:flex items-center space-x-10 font-semibold text-slate-300">
                 <a href="#about" class="hover:text-white transition-colors">About</a>
                 <a href="#initiatives" class="hover:text-white transition-colors">Initiatives</a>
                 <a href="#team" class="hover:text-white transition-colors">Team</a>
                 <a href="#partners" class="hover:text-white transition-colors">Partners</a>
-                <a href="#events" class="hover:text-white transition-colors">Our Events</a> <!-- New Events link -->
+                <a href="#events" class="hover:text-white transition-colors">Our Events</a>
                 <a href="#blog" class="hover:text-white transition-colors">Blog</a>
             </div>
+
             <div class="flex items-center space-x-4">
                 <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-slate-300 hover:text-white">
-                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h16" /></svg>
+                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                 </button>
             </div>
         </nav>
+
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="lg:hidden" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">About</a>
+                <a href="#initiatives" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Initiatives</a>
+                <a href="#team" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Team</a>
+                <a href="#partners" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Partners</a>
+                <a href="#events" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Our Events</a>
+                <a href="#blog" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Blog</a>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -134,87 +133,100 @@
                 <p class="mt-8 text-lg text-slate-400">
                     Web3 Africa is a high-impact initiative engineering the decentralized future for Africa through elite education, a powerful community, and ecosystem-level development.
                 </p>
-                <div class="mt-12 flex justify-center gap-6">
+                <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
                     <a href="#initiatives" class="btn-primary font-bold py-4 px-10 rounded-full text-lg">Explore Initiatives</a>
                     <a href="https://web3africa.gitbook.io/web3-africa-documentation" target="_blank" class="font-semibold text-slate-300 hover:text-white transition-colors">Read Whitepaper &rarr;</a>
                 </div>
             </div>
         </section>
 
+        <hr class="border-t border-slate-700/50 container mx-auto">
+
         <section id="about" class="py-24">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title">Our Mission</h2>
-                <p class="mt-6 text-xl text-slate-300">
+                <h2 class="section-title font-extrabold mb-6">Our Mission</h2>
+                <p class="mt-6 max-w-3xl mx-auto text-xl text-slate-300">
                     To unlock Africa's potential by providing accessible Web3 education, fostering a vibrant community of builders, and connecting talent to global opportunities.
                 </p>
-                <div class="mt-8">
-                    <div class="image-container">
-                        <img src="web3africa-our-mission.png" alt="Our Mission" />
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="image-container shadow-2xl">
+                        <img src="web3africa-our-mission.png" alt="A diverse group of African professionals collaborating on Web3 projects" />
                     </div>
                 </div>
             </div>
         </section>
+        
+        <hr class="border-t border-slate-700/50 container mx-auto">
 
-        <section id="initiatives" class="py-24 bg-slate-900">
+        <section id="initiatives" class="py-24 bg-slate-900/50">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title">Core Initiatives</h2>
-                <div class="mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <h2 class="section-title font-extrabold mb-16">Core Initiatives</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     <div class="interactive-card p-8">
-                        <h3 class="text-2xl font-bold text-white">SkillChain Program</h3>
-                        <div class="image-container">
-                            <img src="web3africa-skillchain.png" alt="SkillChain Program" />
+                        <h3 class="text-2xl font-bold text-white mb-4">SkillChain Program</h3>
+                        <div class="image-container mb-4">
+                            <img src="web3africa-skillchain.png" alt="SkillChain Program visual" />
                         </div>
-                        <p class="mt-4 text-slate-400">Join our intensive training program to learn in-demand Web3 skills and get ready for a career in the decentralized space.</p>
+                        <p class="text-slate-400">Join our intensive training program to learn in-demand Web3 skills and get ready for a career in the decentralized space.</p>
                         <a href="#" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Apply Now &rarr;</a>
                     </div>
                     <div class="interactive-card p-8">
-                        <h3 class="text-2xl font-bold text-white">Ambassador Program</h3>
-                        <div class="image-container">
-                            <img src="web3africa-ambassador.png" alt="Ambassador Program" />
+                        <h3 class="text-2xl font-bold text-white mb-4">Ambassador Program</h3>
+                        <div class="image-container mb-4">
+                            <img src="web3africa-ambassador.png" alt="Ambassador Program visual" />
                         </div>
-                        <p class="mt-4 text-slate-400">Become a leader in your community. Represent Web3Africa and help us grow our reach across the continent.</p>
+                        <p class="text-slate-400">Become a leader in your community. Represent Web3Africa and help us grow our reach across the continent.</p>
                         <a href="#" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Become an Ambassador &rarr;</a>
                     </div>
                     <div class="interactive-card p-8">
-                        <h3 class="text-2xl font-bold text-white">Project Incubation</h3>
-                        <p class="mt-4 text-slate-400">Have an innovative Web3 idea? We provide resources and mentorship to help you build and launch.</p>
+                        <h3 class="text-2xl font-bold text-white mb-4">Project Incubation</h3>
+                         <div class="image-container mb-4">
+                            <img src="https://images.unsplash.com/photo-1556761175-b413da4b2489?q=80&w=2070&auto=format&fit=crop" alt="Project Incubation visual" />
+                        </div>
+                        <p class="text-slate-400">Have an innovative Web3 idea? We provide resources and mentorship to help you build and launch.</p>
                         <a href="#" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Submit a Project &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <hr class="border-t border-slate-700/50 container mx-auto">
+
         <section id="partners" class="py-24">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title">Our Partners</h2>
-                <div class="mt-8">
+                <h2 class="section-title font-extrabold mb-16">Our Partners</h2>
+                <div class="max-w-md mx-auto">
                     <div class="interactive-card p-8">
-                        <h3 class="text-2xl font-bold text-white">EdenFi</h3>
-                        <div class="image-container">
-                            <img src="web3farica-edenfi.png" alt="EdenFi Logo" />
+                        <h3 class="text-2xl font-bold text-white mb-4">EdenFi</h3>
+                        <div class="image-container mb-4">
+                            <img src="web3africa-edenfi.png" alt="EdenFi Logo" />
                         </div>
-                        <p class="mt-4 text-slate-400">A revolutionary smart wallet for Africa and its diaspora.</p>
+                        <p class="text-slate-400">A revolutionary smart wallet for Africa and its diaspora.</p>
                         <a href="https://edenfi.io" target="_blank" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Read more about EdenFi &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <hr class="border-t border-slate-700/50 container mx-auto">
 
         <section id="events" class="py-24">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title">Our Events</h2>
-                <p class="mt-6 text-xl text-slate-300">
+                <h2 class="section-title font-extrabold mb-6">Our Events</h2>
+                <p class="mt-6 max-w-3xl mx-auto text-xl text-slate-300">
                     Check out our upcoming scheduled events and participate in our community activities!
                 </p>
-                <div class="mt-8">
+                <div class="mt-12">
                     <a href="https://docs.google.com/document/d/1vScp2PBVgLFmSF1NOE0y73b-Ezgsrsx8nZPrLw_iHPo/edit?usp=drivesdk" target="_blank" class="btn-primary font-bold py-4 px-10 rounded-full text-lg">View Upcoming Events</a>
                 </div>
             </div>
         </section>
 
+        <hr class="border-t border-slate-700/50 container mx-auto">
+
         <section id="team" class="py-24">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title">The Core Team</h2>
+                <h2 class="section-title font-extrabold mb-16">The Core Team</h2>
                 <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="interactive-card p-8">
                         <h3 class="text-2xl font-bold text-white">Richard Joseph</h3>
@@ -232,16 +244,16 @@
             </div>
         </section>
 
-        <section id="blog" class="py-24 bg-slate-900">
+        <section id="blog" class="py-24 bg-slate-900/50">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title">From Our Blog</h2>
-                <p class="mt-4 text-slate-400">Dive into our articles, tutorials, and insights on our Medium page.</p>
-                <a href="https://web3africaa.medium.com" target="_blank" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Read More &rarr;</a>
+                <h2 class="section-title font-extrabold mb-6">From Our Blog</h2>
+                <p class="mt-4 text-slate-400 max-w-2xl mx-auto">Dive into our articles, tutorials, and insights on our Medium page to stay updated with the latest in the Web3 space from an African perspective.</p>
+                <a href="https://web3africaa.medium.com" target="_blank" class="mt-8 btn-primary font-bold py-4 px-10 rounded-full text-lg inline-block">Read More &rarr;</a>
             </div>
         </section>
     </main>
 
-    <footer id="contact" class="bg-slate-900 text-slate-400 border-t border-orange-500/20">
+    <footer id="contact" class="bg-gray-900 text-slate-400 border-t border-orange-500/20">
         <div class="container mx-auto px-4 py-16 text-center">
             <p>&copy; <span id="copyright-year"></span> Web3Africa. All Rights Reserved.</p>
         </div>
@@ -249,8 +261,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
             document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
+            // Intersection Observer for scroll animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
