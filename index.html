@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web3Africa | Engineering Africa's Decentralized Future</title>
+    <title>Web3 Africa | Engineering Africa's Decentralized Future</title>
 
     <meta name="description" content="Web3 Africa is a high-impact initiative engineering the decentralized future for Africa through elite education, a powerful community, and ecosystem-level development.">
     <meta name="keywords" content="Web3, Blockchain, Africa, Decentralized, Cryptocurrency, NFT, DeFi, Smart Contracts, Metaverse, Nigeria, Ghana, Kenya, SkillChain, Web3 Jobs, DLT, Bootcamps, Events, AMA">
-    <meta name="author" content="Web3Africa">
+    <meta name="author" content="Web3 Africa">
 
     <link rel="icon" href="web3africa-logo.png">
 
@@ -112,13 +112,12 @@
     <header class="header sticky top-0 z-50">
         <nav class="container mx-auto px-4 flex items-center justify-between h-24">
             <a href="#home" class="flex items-center space-x-4">
-                <img src="web3africa-logo.png" alt="Web3Africa Logo" class="h-12 w-auto">
-                <span class="text-2xl font-extrabold text-white">Web3Africa</span>
+                <img src="web3africa-logo.png" alt="Web3 Africa Logo" class="h-12 w-auto">
+                <span class="text-2xl font-extrabold text-white">Web3 Africa</span>
             </a>
             <div class="hidden lg:flex items-center space-x-10 font-semibold text-slate-300">
                 <a href="#about" class="hover:text-white transition-colors">About</a>
                 <a href="#initiatives" class="hover:text-white transition-colors">Initiatives</a>
-                <a href="#events" class="hover:text-white transition-colors">Events</a>
                 <a href="#team" class="hover:text-white transition-colors">Team</a>
                 <a href="#contact" class="hover:text-white transition-colors">Contact</a>
                 <a href="#blog" class="hover:text-white transition-colors">Blog</a>
@@ -133,7 +132,6 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">About</a>
                 <a href="#initiatives" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Initiatives</a>
-                <a href="#events" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Events</a>
                 <a href="#team" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Team</a>
                 <a href="#contact" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Contact</a>
                 <a href="#blog" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Blog</a>
@@ -179,7 +177,8 @@
         <section id="initiatives" class="py-24 bg-slate-900/50">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="section-title text-4xl font-extrabold mb-16 tracking-tight animate-gradient-pan">Core Initiatives</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                    <!-- Card 1: SkillChain -->
                     <div class="interactive-card p-8 scroll-animate">
                         <h3 class="text-2xl font-bold text-white mb-4">SkillChain Program</h3>
                         <div class="image-container mb-4">
@@ -188,14 +187,16 @@
                         <p class="text-slate-400">Join our intensive training program to learn in-demand Web3 skills and get ready for a career in the decentralized space.</p>
                         <a href="https://tally.so/r/mJrEGX" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Apply Now &rarr;</a>
                     </div>
+                    <!-- Card 2: Ambassador -->
                     <div class="interactive-card p-8 scroll-animate" style="transition-delay: 150ms;">
                         <h3 class="text-2xl font-bold text-white mb-4">Ambassador Program</h3>
                         <div class="image-container mb-4">
                             <img src="Web3africa-ambassador.png" alt="Ambassador Program visual" />
                         </div>
-                        <p class="text-slate-400">Become a leader in your community. Represent Web3Africa and help us grow our reach across the continent.</p>
+                        <p class="text-slate-400">Become a leader in your community. Represent Web3 Africa and help us grow our reach across the continent.</p>
                         <a href="https://forms.gle/w7tbXAA7jwbNFYe87" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Become an Ambassador &rarr;</a>
                     </div>
+                    <!-- Card 3: Incubation -->
                     <div class="interactive-card p-8 scroll-animate relative" style="transition-delay: 300ms;">
                         <div class="absolute top-0 right-0 p-4">
                            <svg class="h-10 w-10 text-amber-400 opacity-20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -206,26 +207,15 @@
                         <p class="mt-4 text-slate-400">Have an innovative Web3 idea? We provide resources, funding, and mentorship to help you build and launch your project.</p>
                         <a href="mailto:web3africa2024@gmail.com" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Submit a Project &rarr;</a>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <hr class="border-t border-slate-700/50 container mx-auto">
-
-        <!-- Bootcamps & Events Section -->
-        <section id="events" class="py-24">
-            <div class="container mx-auto px-4 text-center scroll-animate">
-                <h2 class="section-title text-4xl font-extrabold mb-6 tracking-tight animate-gradient-pan">Bootcamps & Events</h2>
-                <p class="mt-6 max-w-3xl mx-auto text-xl text-slate-300">
-                    Join our hands-on workshops, insightful campus meetups, and engaging online events. We're building the future of Web3 in Africa, one event at a time.
-                </p>
-                <div class="mt-12 max-w-4xl mx-auto">
-                    <div class="image-container shadow-2xl">
-                        <img src="web3africa-events.png" alt="Web3Africa community event with people learning and networking" />
+                    <!-- Card 4: Bootcamps & Events -->
+                    <div class="interactive-card p-8 scroll-animate" style="transition-delay: 450ms;">
+                        <h3 class="text-2xl font-bold text-white mb-4">Bootcamps & Events</h3>
+                        <div class="image-container mb-4">
+                            <img src="web3africa-events.png" alt="Web3 Africa community event with people learning and networking" />
+                        </div>
+                        <p class="text-slate-400">Join our hands-on workshops, insightful campus meetups, and engaging online events to accelerate your Web3 journey.</p>
+                        <a href="https://docs.google.com/document/d/15fk93--FV_T__VQ_f11MhJbV0uKbTaIXcIZuahUmcU0/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">View Schedule &rarr;</a>
                     </div>
-                </div>
-                <div class="mt-12">
-                     <a href="https://docs.google.com/document/d/15fk93--FV_T__VQ_f11MhJbV0uKbTaIXcIZuahUmcU0/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="btn-primary font-bold py-4 px-10 rounded-full text-lg">View Schedule</a>
                 </div>
             </div>
         </section>
@@ -236,32 +226,28 @@
         <section id="team" class="py-24">
             <div class="container mx-auto px-4 text-center scroll-animate">
                 <h2 class="section-title text-4xl font-extrabold mb-6 tracking-tight animate-gradient-pan">The Core Team</h2>
-                <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-300">
+                <p class="mt-4 text-slate-400 max-w-2xl mx-auto">
                     Our dedicated team of builders, educators, and community leaders is the driving force behind our mission. We are passionate about empowering Africa for the decentralized future.
                 </p>
-                <div class="mt-12">
-                    <a href="#" class="btn-primary font-bold py-4 px-10 rounded-full text-lg">Meet The Core Team</a>
-                </div>
+                <a href="#" class="mt-8 btn-primary font-bold py-4 px-10 rounded-full text-lg inline-block animate-pulse-glow">Meet The Core Team</a>
             </div>
         </section>
 
         <hr class="border-t border-slate-700/50 container mx-auto">
         
         <!-- AMA Section -->
-        <section id="ama" class="py-24 bg-slate-900/50">
+        <section id="ama" class="py-24">
             <div class="container mx-auto px-4 text-center scroll-animate">
                 <h2 class="section-title text-4xl font-extrabold mb-6 tracking-tight animate-gradient-pan">Schedule an AMA</h2>
-                <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-300">
-                    Want to host an "Ask Me Anything" session with the Web3Africa team for your community or project? We'd love to connect.
+                <p class="mt-4 text-slate-400 max-w-2xl mx-auto">
+                    Want to host an "Ask Me Anything" session with the Web3 Africa team for your community or project? We'd love to connect.
                 </p>
-                <div class="mt-12">
-                    <a href="mailto:web3africa2024@gmail.com" class="btn-primary font-bold py-4 px-10 rounded-full text-lg">Apply for an AMA</a>
-                </div>
+                <a href="mailto:web3africa2024@gmail.com" class="mt-8 btn-primary font-bold py-4 px-10 rounded-full text-lg inline-block animate-pulse-glow">Apply for an AMA</a>
             </div>
         </section>
 
         <!-- Blog Section -->
-        <section id="blog" class="py-24">
+        <section id="blog" class="py-24 bg-slate-900/50">
             <div class="container mx-auto px-4 text-center scroll-animate">
                 <h2 class="section-title text-4xl font-extrabold mb-6 tracking-tight animate-gradient-pan">From Our Blog</h2>
                 <p class="mt-4 text-slate-400 max-w-2xl mx-auto">Dive into our articles, tutorials, and insights on our Medium page to stay updated with the latest in the Web3 space from an African perspective.</p>
@@ -270,7 +256,7 @@
         </section>
 
         <!-- Join Community Section -->
-        <section id="community" class="py-24 bg-slate-900/50">
+        <section id="community" class="py-24">
              <div class="container mx-auto px-4 text-center">
                 <h2 class="section-title text-4xl font-extrabold mb-16 tracking-tight animate-gradient-pan">Join The Community</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -312,7 +298,7 @@
                    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
                 </a>
             </div>
-            <p class="text-center text-sm">&copy; <span id="copyright-year"></span> Web3Africa. All Rights Reserved.</p>
+            <p class="text-center text-sm">&copy; <span id="copyright-year"></span> Web3 Africa. All Rights Reserved.</p>
         </div>
     </footer>
 
