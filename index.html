@@ -20,11 +20,11 @@
 
     <style>
         :root {
-            --color-primary: #D97706; /* Dark Tangerine */
-            --color-secondary: #3B82F6; /* Sky Blue */
-            --color-accent: #FBBF24; /* Bright Yellow */
-            --color-background: #1F2937; /* Dark Gray */
-            --color-surface: #374151; /* Gray */
+            --color-primary: #D97706;
+            --color-secondary: #3B82F6;
+            --color-accent: #FBBF24;
+            --color-background: #1F2937;
+            --color-surface: #374151;
             --color-text-light: #f8fafc;
             --color-text-dark: #020617;
             --color-border: rgba(217, 119, 6, 0.2);
@@ -39,12 +39,48 @@
             background: rgba(2, 6, 23, 0.7);
             backdrop-filter: blur(16px);
         }
+
+        /* --- NEW ANIMATIONS --- */
+
+        /* Keyframes for new animations */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(217, 119, 6, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(217, 119, 6, 0.7); }
+        }
+        @keyframes gradient-pan {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animation utility classes */
+        .animate-pulse-glow {
+            animation: pulse-glow 4s infinite ease-in-out;
+        }
+        .animate-gradient-pan {
+            background-size: 200% 200%;
+            animation: gradient-pan 5s infinite ease-in-out;
+        }
+
+        /* Enhanced scroll animation */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* --- END OF NEW ANIMATIONS --- */
+
+
         .btn-primary {
             position: relative;
             background: var(--color-primary);
             color: white;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(217, 119, 6, 0.4);
         }
         .btn-primary:hover {
             transform: translateY(-3px);
@@ -54,24 +90,17 @@
             background: -webkit-linear-gradient(45deg, var(--color-accent), var(--color-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 2.5rem;
         }
         .interactive-card {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: 1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* Added to contain the corner icon */
         }
         .interactive-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 0 30px rgba(217, 119, 6, 0.3);
-        }
-        .scroll-animate {
-            opacity: 0;
-            transition: opacity 0.8s ease-out;
-        }
-        .is-visible {
-            opacity: 1;
         }
         .image-container {
             position: relative;
@@ -97,7 +126,6 @@
                 <img src="web3africa-logo.png" alt="Web3Africa Logo" class="h-12 w-auto">
                 <span class="text-2xl font-extrabold text-white">Web3Africa</span>
             </a>
-
             <div class="hidden lg:flex items-center space-x-10 font-semibold text-slate-300">
                 <a href="#about" class="hover:text-white transition-colors">About</a>
                 <a href="#initiatives" class="hover:text-white transition-colors">Initiatives</a>
@@ -106,15 +134,13 @@
                 <a href="#events" class="hover:text-white transition-colors">Our Events</a>
                 <a href="#blog" class="hover:text-white transition-colors">Blog</a>
             </div>
-
             <div class="flex items-center space-x-4">
                 <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-slate-300 hover:text-white">
                     <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                 </button>
             </div>
         </nav>
-
-        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="lg:hidden" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="lg:hidden" x-transition>
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">About</a>
                 <a href="#initiatives" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Initiatives</a>
@@ -128,13 +154,13 @@
 
     <main>
         <section id="home" class="relative py-32">
-            <div class="container mx-auto px-4 text-center relative z-10">
-                <h1 class="text-5xl font-black text-white">Engineering Africa's Decentralized Future.</h1>
-                <p class="mt-8 text-lg text-slate-400">
+            <div class="container mx-auto px-4 text-center relative z-10 scroll-animate">
+                <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight">Engineering Africa's Decentralized Future.</h1>
+                <p class="mt-8 text-lg text-slate-400 max-w-3xl mx-auto">
                     Web3 Africa is a high-impact initiative engineering the decentralized future for Africa through elite education, a powerful community, and ecosystem-level development.
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
-                    <a href="#initiatives" class="btn-primary font-bold py-4 px-10 rounded-full text-lg">Explore Initiatives</a>
+                    <a href="#initiatives" class="btn-primary font-bold py-4 px-10 rounded-full text-lg animate-pulse-glow">Explore Initiatives</a>
                     <a href="https://web3africa.gitbook.io/web3-africa-documentation" target="_blank" class="font-semibold text-slate-300 hover:text-white transition-colors">Read Whitepaper &rarr;</a>
                 </div>
             </div>
@@ -143,8 +169,8 @@
         <hr class="border-t border-slate-700/50 container mx-auto">
 
         <section id="about" class="py-24">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title font-extrabold mb-6">Our Mission</h2>
+            <div class="container mx-auto px-4 text-center scroll-animate">
+                <h2 class="section-title text-4xl font-extrabold mb-6 tracking-tight animate-gradient-pan">Our Mission</h2>
                 <p class="mt-6 max-w-3xl mx-auto text-xl text-slate-300">
                     To unlock Africa's potential by providing accessible Web3 education, fostering a vibrant community of builders, and connecting talent to global opportunities.
                 </p>
@@ -160,9 +186,9 @@
 
         <section id="initiatives" class="py-24 bg-slate-900/50">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title font-extrabold mb-16">Core Initiatives</h2>
+                <h2 class="section-title text-4xl font-extrabold mb-16 tracking-tight animate-gradient-pan">Core Initiatives</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="interactive-card p-8">
+                    <div class="interactive-card p-8 scroll-animate">
                         <h3 class="text-2xl font-bold text-white mb-4">SkillChain Program</h3>
                         <div class="image-container mb-4">
                             <img src="Web3africa-skillchain.png" alt="SkillChain Program visual" />
@@ -170,7 +196,7 @@
                         <p class="text-slate-400">Join our intensive training program to learn in-demand Web3 skills and get ready for a career in the decentralized space.</p>
                         <a href="#" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Apply Now &rarr;</a>
                     </div>
-                    <div class="interactive-card p-8">
+                    <div class="interactive-card p-8 scroll-animate" style="transition-delay: 150ms;">
                         <h3 class="text-2xl font-bold text-white mb-4">Ambassador Program</h3>
                         <div class="image-container mb-4">
                             <img src="Web3africa-ambassador.png" alt="Ambassador Program visual" />
@@ -178,12 +204,14 @@
                         <p class="text-slate-400">Become a leader in your community. Represent Web3Africa and help us grow our reach across the continent.</p>
                         <a href="#" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Become an Ambassador &rarr;</a>
                     </div>
-                    <div class="interactive-card p-8">
-                        <h3 class="text-2xl font-bold text-white mb-4">Project Incubation</h3>
-                         <div class="image-container mb-4">
-                            <img src="https://images.unsplash.com/photo-1556761175-b413da4b2489?q=80&w=2070&auto=format&fit=crop" alt="Project Incubation visual" />
+                    <div class="interactive-card p-8 scroll-animate relative" style="transition-delay: 300ms;">
+                        <div class="absolute top-0 right-0 p-4">
+                           <svg class="h-10 w-10 text-amber-400 opacity-20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311l-3.75 0m3.75-7.478a12.097 12.097 0 00-3.75 0m12.328-9.032l-3.75 0m0 0l-3.75 0m3.75 0l3.75 0M9.75 4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-2.25A1.125 1.125 0 019.75 6.375v-1.5z" />
+                           </svg>
                         </div>
-                        <p class="text-slate-400">Have an innovative Web3 idea? We provide resources and mentorship to help you build and launch.</p>
+                        <h3 class="text-2xl font-bold text-white mb-4 mt-6">Project Incubation</h3>
+                        <p class="mt-4 text-slate-400">Have an innovative Web3 idea? We provide resources, funding, and mentorship to help you build and launch your project.</p>
                         <a href="#" class="mt-6 inline-block font-semibold text-orange-500 hover:text-orange-400">Submit a Project &rarr;</a>
                     </div>
                 </div>
@@ -193,8 +221,8 @@
         <hr class="border-t border-slate-700/50 container mx-auto">
 
         <section id="partners" class="py-24">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title font-extrabold mb-16">Our Partners</h2>
+            <div class="container mx-auto px-4 text-center scroll-animate">
+                <h2 class="section-title text-4xl font-extrabold mb-16 tracking-tight animate-gradient-pan">Our Partners</h2>
                 <div class="max-w-md mx-auto">
                     <div class="interactive-card p-8">
                         <h3 class="text-2xl font-bold text-white mb-4">EdenFi</h3>
@@ -211,13 +239,13 @@
         <hr class="border-t border-slate-700/50 container mx-auto">
 
         <section id="events" class="py-24">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title font-extrabold mb-6">Our Events</h2>
+            <div class="container mx-auto px-4 text-center scroll-animate">
+                <h2 class="section-title text-4xl font-extrabold mb-6 tracking-tight animate-gradient-pan">Our Events</h2>
                 <p class="mt-6 max-w-3xl mx-auto text-xl text-slate-300">
                     Check out our upcoming scheduled events and participate in our community activities!
                 </p>
                 <div class="mt-12">
-                    <a href="https://docs.google.com/document/d/1vScp2PBVgLFmSF1NOE0y73b-Ezgsrsx8nZPrLw_iHPo/edit?usp=drivesdk" target="_blank" class="btn-primary font-bold py-4 px-10 rounded-full text-lg">View Upcoming Events</a>
+                    <a href="https://docs.google.com/document/d/1vScp2PBVgLFmSF1NOE0y73b-Ezgsrsx8nZPrLw_iHPo/edit?usp=drivesdk" target="_blank" class="btn-primary font-bold py-4 px-10 rounded-full text-lg animate-pulse-glow">View Upcoming Events</a>
                 </div>
             </div>
         </section>
@@ -225,18 +253,18 @@
         <hr class="border-t border-slate-700/50 container mx-auto">
 
         <section id="team" class="py-24">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title font-extrabold mb-16">The Core Team</h2>
-                <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="interactive-card p-8">
+            <div class="container mx-auto px-4 text-center scroll-animate">
+                <h2 class="section-title text-4xl font-extrabold mb-16 tracking-tight animate-gradient-pan">The Core Team</h2>
+                <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="interactive-card p-8 scroll-animate">
                         <h3 class="text-2xl font-bold text-white">Richard Joseph</h3>
                         <p class="text-orange-500">CEO (Nigeria 🇳🇬)</p>
                     </div>
-                    <div class="interactive-card p-8">
+                    <div class="interactive-card p-8 scroll-animate" style="transition-delay: 150ms;">
                         <h3 class="text-2xl font-bold text-white">Atom</h3>
                         <p class="text-orange-500">Operations Lead (Ghana 🇬🇭)</p>
                     </div>
-                    <div class="interactive-card p-8">
+                    <div class="interactive-card p-8 scroll-animate" style="transition-delay: 300ms;">
                         <h3 class="text-2xl font-bold text-white">Segun Paul</h3>
                         <p class="text-orange-500">Community Manager (Nigeria 🇳🇬)</p>
                     </div>
@@ -245,10 +273,10 @@
         </section>
 
         <section id="blog" class="py-24 bg-slate-900/50">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title font-extrabold mb-6">From Our Blog</h2>
+            <div class="container mx-auto px-4 text-center scroll-animate">
+                <h2 class="section-title text-4xl font-extrabold mb-6 tracking-tight animate-gradient-pan">From Our Blog</h2>
                 <p class="mt-4 text-slate-400 max-w-2xl mx-auto">Dive into our articles, tutorials, and insights on our Medium page to stay updated with the latest in the Web3 space from an African perspective.</p>
-                <a href="https://web3africaa.medium.com" target="_blank" class="mt-8 btn-primary font-bold py-4 px-10 rounded-full text-lg inline-block">Read More &rarr;</a>
+                <a href="https://web3africaa.medium.com" target="_blank" class="mt-8 btn-primary font-bold py-4 px-10 rounded-full text-lg inline-block animate-pulse-glow">Read More &rarr;</a>
             </div>
         </section>
     </main>
@@ -261,17 +289,16 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Set current year in footer
             document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
-            // Intersection Observer for scroll animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.2 }); // Changed threshold for better timing
+
             document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
         });
     </script>
