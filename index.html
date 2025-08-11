@@ -20,7 +20,7 @@
 
     <style>
         :root {
-            --color-primary: #D97706; /* Web3 Africa Orange for accents */
+            --color-primary: #D97706;
             --color-background: #000000;
             --color-surface: rgba(255, 255, 255, 0.05);
             --color-border: rgba(255, 255, 255, 0.1);
@@ -114,17 +114,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: transparent;
-            border: 1px solid transparent;
             padding: 1rem 0;
+            border-bottom: 1px solid var(--color-border);
         }
         .faq-item summary::-webkit-details-marker {
             display: none;
         }
         .faq-item summary .icon {
             transition: transform 0.3s ease;
-            background-color: var(--color-surface);
-            border: 1px solid var(--color-border);
+            background-color: transparent;
+            border: none;
             border-radius: 9999px;
             padding: 0.25rem;
             width: 2rem;
@@ -140,7 +139,7 @@
         }
 
         .hero-video-mockup {
-            background-image: url('web3africa-hero-video-mockup.png');
+            background-image: url('Web3_Nigeria_UI-UX-MODIFIED_page-0001.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -222,7 +221,7 @@
                         <a href="https://web3africa.gitbook.io/web3-africa-documentation" target="_blank" rel="noopener noreferrer" class="btn-secondary font-semibold py-3 px-8 rounded-full text-base w-full sm:w-auto">Read Whitepaper</a>
                     </div>
                 </div>
-                <div class="relative w-full aspect-video rounded-3xl overflow-hidden hero-video-mockup">
+                <div class="relative w-full h-80 md:h-[400px] rounded-3xl overflow-hidden hero-video-mockup">
                     <div class="play-button">
                         <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 ml-1">
                             <path d="M8 5v14l11-7z"/>
@@ -322,13 +321,12 @@
         
         <section id="faq" class="py-20">
             <h2 class="text-center text-3xl font-extrabold text-white mb-4">Frequently asked questions</h2>
-            <p class="text-center text-secondary mb-12">We've answered some of your most common questions.</p>
             <div class="max-w-4xl mx-auto divide-y divide-gray-800">
                 <div class="faq-item" x-data="{ open: false }">
                     <details @toggle="open = !open">
                         <summary class="font-semibold text-lg">
                             What is Web3 Africa?
-                            <svg class="w-6 h-6 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            <svg class="w-6 h-6 icon text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                         </summary>
                         <div class="faq-answer">
                             Web3 Africa is a high-impact initiative dedicated to building Africa's decentralized future. We focus on providing top-tier Web3 education, fostering a strong community of developers and creators, and connecting African talent with global opportunities in the blockchain space.
@@ -339,7 +337,7 @@
                     <details @toggle="open = !open">
                         <summary class="font-semibold text-lg">
                             Who can join the SkillChain Program?
-                            <svg class="w-6 h-6 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            <svg class="w-6 h-6 icon text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                         </summary>
                         <div class="faq-answer">
                             The SkillChain Program is designed for individuals across Africa who are passionate about learning Web3 technologies. While some programs may have prerequisites, we welcome beginners, developers, designers, and entrepreneurs who are eager to build a career in the decentralized ecosystem.
@@ -350,7 +348,7 @@
                     <details @toggle="open = !open">
                         <summary class="font-semibold text-lg">
                             How can I become a partner?
-                            <svg class="w-6 h-6 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            <svg class="w-6 h-6 icon text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                         </summary>
                         <div class="faq-answer">
                             We are always open to collaborating with organizations that share our vision for a decentralized Africa. If you're interested in partnering with us on events, education, or ecosystem development, please reach out to us via email at <a href="mailto:web3africa2024@gmail.com" class="text-orange-400 hover:underline">web3africa2024@gmail.com</a>.
@@ -361,7 +359,7 @@
                     <details @toggle="open = !open">
                         <summary class="font-semibold text-lg">
                             What kind of events do you host?
-                            <svg class="w-6 h-6 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            <svg class="w-6 h-6 icon text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                         </summary>
                         <div class="faq-answer">
                             We host a variety of events, including technical workshops, developer bootcamps, campus meetups, and online AMA (Ask Me Anything) sessions with industry experts. Our goal is to provide continuous learning and networking opportunities for our community.
@@ -375,13 +373,21 @@
             <div class="section-card p-8 md:p-12 text-center">
                 <h2 class="text-3xl font-extrabold text-white">Join our Community</h2>
                 <p class="mt-4 max-w-2xl mx-auto text-lg text-secondary">
-                    Join our newsletter to stay up to date on features and releases.
+                    Connect with thousands of builders, creators, and innovators. Get support, share ideas, and be part of Africa's Web3 revolution.
                 </p>
-                <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <input type="email" placeholder="Enter your email" class="bg-gray-800 text-white rounded-full py-3 px-6 w-full sm:w-80 outline-none focus:ring-2 focus:ring-orange-400">
-                    <button class="btn-primary font-semibold py-3 px-8 rounded-full text-base w-full sm:w-auto">
-                        Subscribe
-                    </button>
+                <div class="mt-8 flex flex-wrap justify-center gap-4">
+                    <a href="https://x.com/web3afric" target="_blank" rel="noopener noreferrer" class="btn-secondary font-semibold py-3 px-6 rounded-full flex items-center gap-2">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                        X (Twitter)
+                    </a>
+                    <a href="https://t.me/web3Afric" target="_blank" rel="noopener noreferrer" class="btn-secondary font-semibold py-3 px-6 rounded-full flex items-center gap-2">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.24-3.11-2.04 2.07c-.23.23-.42.42-.83.42z"></path></svg>
+                        Telegram
+                    </a>
+                    <a href="https://discord.gg/ahE7tcUA" target="_blank" rel="noopener noreferrer" class="btn-secondary font-semibold py-3 px-6 rounded-full flex items-center gap-2">
+                       <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4464.8254-.6184 1.2525a17.2963 17.2963 0 00-4.8776 0 18.01 18.01 0 00-.6184-1.2525.077.077 0 00-.0785-.0371a19.7913 19.7913 0 00-4.8851 1.5152.0699.0699 0 00-.0321.027c-1.8431 4.6745-1.8431 9.673 0 14.3475a.069.069 0 00.0321.027c1.6222.4877 3.2651.8741 4.8851 1.1591a.076.076 0 00.0785-.0371c.2376-.4687.4599-.959.6443-1.4563a.0731.0731 0 00-.0429-.0861a12.8333 12.8333 0 01-1.2581-.6074a.0711.0711 0 01-.0076-.1037c.1258-.1744.2516-.3488.3774-.539a.0721.0721 0 01.082-.027c.4646.1349.9292.2539 1.4093.371a.077.077 0 00.0861-.051c.2309-.6877.3938-1.4225.4985-2.21822a.075.075 0 00-.051-.0861c-1.022-1.01-2.181-1.6248-3.4475-1.85a.0741.0741 0 01-.0586-.0861c.002-.021.003-.042.004-.063a.0711.0711 0 01.025-.059c1.048-1.028 2.34-1.442 3.815-1.442s2.767.414 3.815 1.442a.0711.0711 0 01.025.059c.001.021.002.042.004.063a.0741.0741 0 01-.0586.0861c-1.2665.2252-2.4255.84-3.4475 1.85a.075.075 0 00-.051.0861c.1047.7597.2676 1.4945.4985 2.21822a.077.077 0 00.0861.051c.4801-.1171.9447-.2361 1.4093-.371a.0721.0721 0 01.082-.027c.1258.1902.2516.3646.3774.539a.0711.0711 0 01-.0076.1037 12.8333 12.8333 0 01-1.2581.6074a.0731.0731 0 00-.0429.0861c.1844.4973.4067.9876.6443 1.4563a.076.076 0 00.0785.0371c1.6199-.285 3.2631-.6714 4.8851-1.1591a.069.069 0 00.0321-.027c1.8431-4.6745 1.8431-9.673 0-14.3475a.0699.0699 0 00-.0321-.027z"></path></svg>
+                        Discord
+                    </a>
                 </div>
             </div>
         </section>
@@ -425,12 +431,14 @@
                  <div class="flex items-center space-x-5 order-1 md:order-2">
                     <a href="https://x.com/web3afric" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
                     <a href="https://t.me/web3Afric" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.24-3.11-2.04 2.07c-.23.23-.42.42-.83.42z"></path></svg></a>
-                    <a href="https://discord.gg/ahE7tcUA" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4464.8254-.6184 1.2525a17.2963 17.2963 0 00-4.8776 0 18.01 18.01 0 00-.6184-1.2525.077.077 0 00-.0785-.0371a19.7913 19.7913 0 00-4.8851 1.5152.0699.0699 0 00-.0321.027c-1.8431 4.6745-1.8431 9.673 0 14.3475a.069.069 0 00.0321.027c1.6222.4877 3.2651.8741 4.8851 1.1591a.076.076 0 00.0785-.0371c.2376-.4687.4599-.959.6443-1.4563a.0731.0731 0 00-.0429-.0861a12.8333 12.8333 0 01-1.2581-.6074a.0711.0711 0 01-.0076-.1037c.1258-.1744.2516-.3488.3774-.539a.0721.0721 0 01.082-.027c.4646.1349.9292.2539 1.4093.371a.077.077 0 00.0861-.051c.2309-.6877.3938-1.4225.4985-2.21822a.075.075 0 00-.051-.0861c-1.022-1.01-2.181-1.6248-3.4475-1.85a.0741.0741 0 01-.0586-.0861c.002-.021.003-.042.004-.063a.0711.0711 0 01.025-.059c1.048-1.028 2.34-1.442 3.815-1.442s2.767.414 3.815 1.442a.0711.0711 0 01.025.059c.001.021.002.042.004.063a.0741.0741 0 01-.0586.0861c-1.2665.2252-2.4255.84-3.4475 1.85a.075.075 0 00-.051.0861c.1047.7597.2676 1.4945.4985 2.21822a.077.077 0 00.0861.051c.4801-.1171.9447-.2361 1.4093-.371a.0721.0721 0 01.082-.027c.1258.1902.2516.3646.3774.539a.0711.0711 0 01-.0076.1037 12.8333 12.8333 0 01-1.2581.6074a.0731.0731 0 00-.0429.0861c.1844.4973.4067.9876.6443 1.4563a.076.076 0 00.0785.0371c1.6199-.285 3.2631-.6714 4.8851-1.1591a.069.069 0 00.0321-.027c1.8431-4.6745 1.8431-9.673 0-14.3475a.0699.0699 0 00-.0321-.027z"></path></svg></a>
-                    <a href="https://web3africaa.medium.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7.45 18.55h9.1V5.45h-9.1v13.1Zm-2.9-13.1H.95v13.1h3.6v-13.1Zm16.7 0h-3.6v13.1h3.6v-13.1Z"></path></svg></a>
+                    <a href="https://discord.gg/ahE7tcUA" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4464.8254-.6184 1.2525a17.2963 17.2963 0 00-4.8776 0 18.01 18.01 0 00-.6184-1.2525.077.077 0 00-.0785-.0371a19.7913 19.7913 0 00-4.8851 1.5152.0699.0699 0 00-.0321.027c-1.8431 4.6745-1.8431 9.673 0 14.3475a.069.069 0 00.0321.027c1.6222.4877 3.2651.8741 4.8851 1.1591a.076.076 0 00.0785-.0371c.2376-.4687.4599-.959.6443-1.4563a.0731.0731 0 00-.0429-.0861a12.8333 12.8333 0 01-1.2581-.6074a.0711.0711 0 01-.0076-.1037c.1258-.1744.2516-.3488.3774-.539a.0721.0721 0 01.082-.027c.4646.1349.9292.2539 1.4093.371a.077.077 0 00.0861-.051c.2309-.6877.3938-1.4225.4985-2.21822a.075.075 0 00-.051-.0861c-1.022-1.01-2.181-1.6248-3.4475-1.85a.0741.0741 0 01-.0586-.0861c.002-.021.003-.042.004-.063a.0711.0711 0 01.025-.059c1.048-1.028 2.34-1.442 3.815-1.442s2.767.414 3.815 1.442a.0711.0711 0 01.025.059c.001.021.002.042.004.063a.0741.0741 0 01-.0586.0861c-1.2665.2252-2.4255.84-3.4475 1.85a.075.075 0 00-.051.0861c.1047.7597.2676 1.4945.4985 2.21822a.077.077 0 00.0861.051c.4801-.1171.9447-.2361 1.4093-.371a.0721.0721 0 01.082-.027c.1258.1902.2516.3646.3774.539a.0711.0711 0 01-.0076.1037 12.8333 12.8333 0 01-1.2581.6074a.0731.0731 0 00-.0429.0861c.1844.4973.4067.9876.6443 1.4563a.076.076 0 00.0785.0371c1.6199-.285 3.2631-.6714 4.8851-1.1591a.069.069 0 00.0321-.027c1.8431-4.6745 1.8431-9.673 0-14.3475a.0699.0699 0 00-.0321-.027z"></path></svg>
+                        Discord
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
