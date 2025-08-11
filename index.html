@@ -328,17 +328,17 @@
         <section id="partners" class="py-20 text-center">
             <p class="text-sm text-secondary uppercase mb-2 font-semibold">Our partners around the globe</p>
             <div class="section-card p-8 md:p-12 flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                 <img src="assets/Partner1.png" alt="Partner 1 Logo" class="h-6 opacity-70 hover:opacity-100 transition-opacity">
-                 <img src="assets/Partner2.png" alt="Partner 2 Logo" class="h-6 opacity-70 hover:opacity-100 transition-opacity">
-                 <img src="assets/partner3.PNG" alt="Partner 3 Logo" class="h-6 opacity-70 hover:opacity-100 transition-opacity">
+                 <img src="assets/Partner1.png" alt="Partner 1 Logo" class="h-8 opacity-70 hover:opacity-100 transition-opacity">
+                 <img src="assets/Partner2.png" alt="Partner 2 Logo" class="h-8 opacity-70 hover:opacity-100 transition-opacity">
+                 <img src="assets/partner3.PNG" alt="Partner 3 Logo" class="h-8 opacity-70 hover:opacity-100 transition-opacity">
             </div>
         </section>
         
-        <section id="faq" class="py-20">
+        <section id="faq" class="py-20" x-data="{ openQuestion: null }">
             <h2 class="text-center text-3xl font-extrabold text-white mb-4">Frequently asked questions</h2>
             <div class="max-w-4xl mx-auto divide-y divide-gray-800">
-                <div class="faq-item" x-data="{ open: false }">
-                    <details @toggle="open = !open">
+                <div class="faq-item" >
+                    <details :open="openQuestion === 1" @click.prevent="openQuestion = (openQuestion === 1 ? null : 1)">
                         <summary class="font-semibold text-lg">
                             What is Web3 Africa?
                             <svg class="w-6 h-6 icon text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
@@ -348,8 +348,8 @@
                         </div>
                     </details>
                 </div>
-                <div class="faq-item" x-data="{ open: false }">
-                    <details @toggle="open = !open">
+                <div class="faq-item" >
+                    <details :open="openQuestion === 2" @click.prevent="openQuestion = (openQuestion === 2 ? null : 2)">
                         <summary class="font-semibold text-lg">
                             Who can join the SkillChain Program?
                             <svg class="w-6 h-6 icon text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
@@ -359,8 +359,8 @@
                         </div>
                     </details>
                 </div>
-                <div class="faq-item" x-data="{ open: false }">
-                    <details @toggle="open = !open">
+                <div class="faq-item" >
+                    <details :open="openQuestion === 3" @click.prevent="openQuestion = (openQuestion === 3 ? null : 3)">
                         <summary class="font-semibold text-lg">
                             How can I become a partner?
                             <svg class="w-6 h-6 icon text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
@@ -370,8 +370,8 @@
                         </div>
                     </details>
                 </div>
-                 <div class="faq-item" x-data="{ open: false }">
-                    <details @toggle="open = !open">
+                 <div class="faq-item" >
+                    <details :open="openQuestion === 4" @click.prevent="openQuestion = (openQuestion === 4 ? null : 4)">
                         <summary class="font-semibold text-lg">
                             What kind of events do you host?
                             <svg class="w-6 h-6 icon text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
